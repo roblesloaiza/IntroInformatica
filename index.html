@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BD-111 · Guía de estudio · Unidades 1–3</title>
+<meta name="description" content="Guía detallada de estudio para BD-111 Introducción a la Informática. Unidades 1 a 3.">
+<style>
+:root{
+  --bg:#07111f; --panel:#0f1d31; --panel2:#142641; --panel3:#192e4e;
+  --text:#edf5ff; --muted:#b3c3d8; --line:#2d4566; --accent:#66d9ef;
+  --accent2:#a78bfa; --gold:#f7cf6b; --green:#80e0a7; --red:#ff9a9a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--text); background:
+  radial-gradient(circle at 90% 5%,rgba(76,99,190,.22),transparent 24rem),
+  linear-gradient(180deg,#06101d,#091625 50%,#07101d);
+  font:16.5px/1.72 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+a{color:#8ee7ff}
+a:hover{color:white}
+header{
+  padding:72px 6vw 54px;
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(90deg,rgba(7,17,31,.9),rgba(7,17,31,.55)),
+    url("https://upload.wikimedia.org/wikipedia/commons/3/30/La_Motherboard.jpg?utm_campaign=index&utm_content=thumbnail_unscaled&utm_source=commons.wikimedia.org") center/cover;
+}
+.hero{max-width:1250px;margin:auto}
+.kicker{font-size:.82rem;letter-spacing:.17em;text-transform:uppercase;font-weight:850;color:var(--accent)}
+h1{font-size:clamp(2.7rem,6vw,5.8rem);line-height:.96;margin:.35rem 0 1rem;max-width:1000px;text-wrap:balance}
+.lead{font-size:1.15rem;max-width:78ch;color:#d8e6f6}
+.tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.5rem}
+.tag{border:1px solid #53739a;background:#0a1a2ddd;border-radius:999px;padding:.4rem .75rem;font-size:.88rem}
+.wrap{display:grid;grid-template-columns:300px minmax(0,1fr);max-width:1600px;margin:auto}
+aside{
+  position:sticky;top:0;height:100vh;overflow:auto;
+  padding:28px 22px;background:#081525;border-right:1px solid var(--line)
+}
+aside strong{display:block;margin-bottom:12px}
+aside a{display:block;text-decoration:none;color:#cbd9ea;padding:8px 10px;border-radius:9px;font-size:.93rem}
+aside a:hover{background:#152944;color:white}
+main{padding:40px 5vw 100px;min-width:0}
+.unit{
+  max-width:1120px;margin:0 auto 90px;padding:38px;
+  background:linear-gradient(180deg,rgba(15,29,49,.97),rgba(10,22,38,.97));
+  border:1px solid var(--line);border-radius:24px;
+  box-shadow:0 30px 90px rgba(0,0,0,.28)
+}
+.unit-label{font-weight:900;text-transform:uppercase;letter-spacing:.14em;color:var(--accent)}
+h2{font-size:clamp(2rem,3.8vw,3.2rem);line-height:1.06;margin:.35rem 0 1.2rem;text-wrap:balance}
+h3{font-size:1.55rem;margin:2.5rem 0 .7rem;color:#f4f8ff}
+h4{font-size:1.1rem;margin:1.4rem 0 .4rem;color:#f6fbff}
+p{max-width:85ch}
+.sec-intro{font-size:1.07rem;color:#dbe8f7}
+.callout{
+  padding:19px 21px;border-radius:16px;background:#132743;border:1px solid #36577f;
+  border-left:5px solid var(--accent);margin:22px 0
+}
+.callout.gold{border-left-color:var(--gold)}
+.callout.green{border-left-color:var(--green)}
+.source-note{font-size:.92rem;color:#c7d6e7;border-left:3px solid #556f93;padding-left:12px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:16px;margin:18px 0}
+.card{padding:18px;border-radius:15px;background:var(--panel2);border:1px solid var(--line)}
+.card p{margin-bottom:0}
+table{width:100%;border-collapse:collapse;margin:20px 0;display:block;overflow:auto}
+th,td{padding:11px 13px;border:1px solid var(--line);vertical-align:top}
+th{background:#1a3152;color:#fff}
+td{background:#0d1b2e}
+.figure{
+  margin:25px 0;background:#07111f;border:1px solid var(--line);
+  border-radius:18px;overflow:hidden
+}
+.figure img{display:block;width:100%;max-height:660px;object-fit:contain;background:#07111f}
+.figure figcaption{padding:13px 16px;color:#c7d5e7;font-size:.91rem;border-top:1px solid var(--line)}
+.twofig{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.twofig .figure{margin:0}
+.diagram{
+  padding:22px;margin:22px 0;border-radius:18px;background:#081526;border:1px solid var(--line);overflow:auto
+}
+.arch{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:10px;align-items:stretch}
+.box{padding:14px;border:1px solid #5476a3;background:#172c49;border-radius:12px;text-align:center}
+.arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:1.5rem}
+.formula{
+  text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:1.06rem;padding:17px;background:#06101d;border:1px solid var(--line);border-radius:12px;margin:14px 0
+}
+.timeline{position:relative;margin:24px 0;padding-left:30px}
+.timeline:before{content:"";position:absolute;left:9px;top:3px;bottom:3px;width:2px;background:#42628d}
+.event{position:relative;padding:0 0 20px 12px}
+.event:before{content:"";position:absolute;left:-28px;top:.45rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px #193354}
+.event b{color:white}
+.legend{font-size:.9rem;color:var(--muted)}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+pre{white-space:pre-wrap;padding:16px;background:#06101d;border:1px solid var(--line);border-radius:12px;overflow:auto}
+.term{color:var(--gold);font-weight:800}
+.refbox{padding:22px;border-radius:18px;background:#0a1728;border:1px solid #314c70;margin-top:30px}
+.refbox li{margin:.55rem 0}
+.credit{font-size:.86rem;color:#aebfd4}
+.model3d{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#06101d;margin:22px 0}
+.model3d iframe{width:100%;height:620px;border:0;display:block}
+.model3d .caption{padding:12px 15px;color:#c6d5e7;font-size:.9rem;border-top:1px solid var(--line)}
+.glossary dt{font-weight:850;color:var(--gold);margin-top:12px}
+.glossary dd{margin-left:0;color:#d9e5f4}
+hr{border:0;border-top:1px solid var(--line);margin:34px 0}
+@media(max-width:960px){
+  .wrap{display:block}aside{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line)}
+  main{padding:24px 16px 70px}.unit{padding:23px}.twofig{grid-template-columns:1fr}
+  .arch{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}
+  .model3d iframe{height:480px}
+}
+@media print{
+  body{background:white;color:#111}.wrap{display:block}aside{display:none}
+  header{background:white;color:#111;padding:30px}.unit{background:white;color:#111;box-shadow:none;border:1px solid #aaa}
+  .card,.diagram,.callout,.refbox{background:white;color:#111}.source-note,.credit,.legend{color:#333}
+  td,th{background:white;color:#111}.figure{break-inside:avoid}.model3d{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hero">
+    <div class="kicker">BD-111 · Introducción a la Informática</div>
+    <h1>Guía de estudio ampliada · Unidades 1, 2 y 3</h1>
+    <p class="lead">Material de consulta desarrollado a partir del programa oficial del curso, <em>Introducción a la Computación</em> de J. Glenn Brookshear y <em>Computer Science Illuminated</em> de Nell Dale y John Lewis. Esta versión se concentra únicamente en las tres primeras unidades y profundiza en cada concepto sin incorporar cuestionarios, prácticas calificadas ni evaluaciones.</p>
+    <div class="tags">
+      <span class="tag">Unidad 1 · Componentes</span>
+      <span class="tag">Unidad 2 · Almacenamiento de datos</span>
+      <span class="tag">Unidad 3 · Sistemas operativos</span>
+      <span class="tag">Fotografías reales</span>
+      <span class="tag">Modelo 3D complementario</span>
+      <span class="tag">Referencias por unidad</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+<aside>
+  <strong>Navegación</strong>
+  <a href="#u1">Unidad 1 · Componentes</a>
+  <a href="#u1-computador">1.1 ¿Qué es un computador?</a>
+  <a href="#u1-hs">1.2 Hardware y software</a>
+  <a href="#u1-fisica">1.3 Arquitectura física</a>
+  <a href="#u1-logica">1.4 Arquitectura lógica</a>
+  <a href="#u1-vn">1.5 von Neumann y ciclo de instrucción</a>
+  <a href="#u1-historia">1.6 Historia</a>
+  <a href="#u2">Unidad 2 · Almacenamiento</a>
+  <a href="#u2-bits">2.1 Bits y almacenamiento</a>
+  <a href="#u2-memoria">2.2 Memoria principal</a>
+  <a href="#u2-masivo">2.3 Almacenamiento masivo</a>
+  <a href="#u2-representacion">2.4 Patrones de bits</a>
+  <a href="#u2-numeracion">2.5 Sistemas numéricos</a>
+  <a href="#u2-enteros">2.6 Enteros</a>
+  <a href="#u2-fraccionarios">2.7 Fraccionarios</a>
+  <a href="#u3">Unidad 3 · Sistemas operativos</a>
+  <a href="#u3-historia">3.1 Historia</a>
+  <a href="#u3-arq">3.2 Arquitectura</a>
+  <a href="#u3-procesos">3.3 Procesos, memoria y CPU</a>
+  <a href="#u3-archivos">3.4 Archivos y dispositivos</a>
+  <a href="#u3-seguridad">3.5 Seguridad</a>
+  <a href="#glosario">Glosario esencial</a>
+</aside>
+
+<main>
+
+
+
+<section class="unit" id="u1">
+<div class="unit-label">Unidad 1 · Componentes</div>
+<h2>El computador como sistema: hardware, software, arquitectura e historia</h2>
+<p class="sec-intro">La primera unidad debe permitir comprender una computadora no como una suma desordenada de piezas, sino como un sistema organizado. Una computadora recibe información, la representa internamente, ejecuta instrucciones, transforma datos, conserva resultados y se comunica con otros dispositivos. Para explicar cómo logra todo esto hay que distinguir niveles: componentes físicos, organización lógica, software y datos.</p>
+
+<h3 id="u1-computador">1.1 ¿Qué es un computador?</h3>
+<p>En el uso cotidiano se llama “computadora” al equipo físico completo: gabinete, pantalla, teclado, portátil o dispositivo móvil. En Ciencias de la Computación resulta más preciso distinguir entre el <span class="term">computador</span> como dispositivo y el <span class="term">sistema de cómputo</span> como la combinación dinámica de hardware, software y datos. Dale y Lewis resaltan precisamente esta diferencia: el dispositivo por sí solo no explica el comportamiento del sistema; son los programas y los datos los que permiten que el hardware se utilice para resolver problemas.</p>
+
+<p>Un sistema de cómputo puede analizarse mediante cuatro funciones generales:</p>
+<div class="grid">
+  <div class="card"><h4>Entrada</h4><p>Recibe datos o instrucciones desde teclado, ratón, pantalla táctil, sensores, cámara, micrófono, red, almacenamiento u otros dispositivos.</p></div>
+  <div class="card"><h4>Procesamiento</h4><p>Ejecuta operaciones aritméticas, lógicas, de comparación, movimiento de datos y control siguiendo instrucciones almacenadas.</p></div>
+  <div class="card"><h4>Almacenamiento</h4><p>Conserva datos de forma temporal o persistente. La memoria principal favorece el trabajo inmediato; el almacenamiento secundario prioriza persistencia y capacidad.</p></div>
+  <div class="card"><h4>Salida y comunicación</h4><p>Presenta resultados en pantalla, audio o impresión y puede transmitirlos a otros sistemas mediante interfaces y redes.</p></div>
+</div>
+
+<p>Estas funciones aparecen tanto en un computador de escritorio como en un teléfono, un cajero automático, un automóvil, un router o un electrodoméstico inteligente. Cambian las dimensiones, la potencia y los dispositivos de entrada/salida, pero persiste la idea de procesar información siguiendo instrucciones.</p>
+
+<div class="callout gold"><strong>Abstracción.</strong> En informática se estudia un sistema por niveles. El programador no necesita analizar el movimiento de cada electrón para utilizar una variable; del mismo modo, el usuario no necesita conocer la estructura interna de un sistema de archivos para abrir una carpeta. Esta separación en niveles permite manejar la complejidad.</div>
+
+<h3 id="u1-hs">1.2 Hardware y software: dos dimensiones del mismo sistema</h3>
+<p><span class="term">Hardware</span> es el conjunto de elementos físicos: procesadores, memoria, placa base, unidades de almacenamiento, fuentes de alimentación, buses, pantallas, teclados, puertos y circuitos. <span class="term">Software</span> es el conjunto de programas e instrucciones que indican al hardware qué operaciones realizar. Ambos dependen entre sí: sin hardware el software no tiene dónde ejecutarse; sin software el hardware carece de una secuencia útil de instrucciones.</p>
+
+<table>
+<tr><th>Nivel</th><th>Ejemplos</th><th>Papel dentro del sistema</th></tr>
+<tr><td>Hardware de procesamiento</td><td>CPU, GPU, aceleradores</td><td>Ejecutar instrucciones y operaciones sobre datos.</td></tr>
+<tr><td>Hardware de memoria</td><td>RAM, ROM/flash de firmware, cachés</td><td>Mantener instrucciones y datos en diferentes niveles de velocidad y persistencia.</td></tr>
+<tr><td>Almacenamiento secundario</td><td>SSD, HDD, memorias flash</td><td>Conservar información cuando el equipo se apaga.</td></tr>
+<tr><td>Entrada/salida</td><td>Teclado, ratón, cámara, audio, pantalla, impresora</td><td>Comunicar el sistema con personas y con el entorno.</td></tr>
+<tr><td>Software de sistema</td><td>Sistema operativo, controladores, utilidades, firmware</td><td>Gestionar recursos y proporcionar servicios básicos.</td></tr>
+<tr><td>Software de aplicación</td><td>Navegador, IDE, procesador de textos, sistema empresarial</td><td>Resolver tareas concretas del usuario.</td></tr>
+<tr><td>Datos</td><td>Texto, imágenes, audio, video, registros, documentos</td><td>Información sobre la que trabajan hardware y software.</td></tr>
+</table>
+
+<h3 id="u1-fisica">1.3 Arquitectura física: reconocer las piezas y comprender su función</h3>
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/30/La_Motherboard.jpg?utm_campaign=index&utm_content=thumbnail_unscaled&utm_source=commons.wikimedia.org" alt="Fotografía real de una placa base de computadora">
+<figcaption><strong>Placa base real.</strong> Es el soporte físico que interconecta CPU, memoria, almacenamiento, tarjetas de expansión y puertos de entrada/salida. Fotografía: Whityya23, Wikimedia Commons. La fotografía es útil para observar que la arquitectura no es una colección de cajas abstractas: en una máquina real, cada recurso necesita conexiones eléctricas y lógicas.</figcaption>
+</figure>
+
+<p>La <span class="term">placa base</span> o <em>motherboard</em> contiene sockets, ranuras, controladores, conectores de alimentación, buses y circuitería que permiten la comunicación entre componentes. No “hace todo el trabajo”, pero proporciona la infraestructura que conecta las unidades funcionales. La disposición concreta depende de la generación y el factor de forma, por lo que una placa moderna puede verse diferente a la de la fotografía y conservar las mismas categorías funcionales.</p>
+
+<div class="twofig">
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Cpu_1.jpg/330px-Cpu_1.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=meta.wikimedia.org" alt="Fotografía real de la parte inferior de una CPU">
+<figcaption><strong>CPU real.</strong> Los contactos metálicos permiten la comunicación eléctrica con la placa base. Imagen CC0, Wikimedia/Meta.</figcaption>
+</figure>
+<figure class="figure">
+<img src="https://images.unsplash.com/photo-1704026437278-77f1db74859c?auto=format&crop=edges&fit=crop&w=1200&q=80" alt="Fotografía real de un módulo de memoria RAM">
+<figcaption><strong>Módulo de memoria RAM.</strong> La placa contiene chips de memoria y contactos que se insertan en una ranura de la placa base. Fotografía: William Warby, Unsplash.</figcaption>
+</figure>
+</div>
+
+<h4>Unidad Central de Procesamiento (CPU)</h4>
+<p>La CPU ejecuta las instrucciones del programa. En una descripción introductoria se distinguen la <strong>unidad de control</strong>, encargada de coordinar la ejecución; los <strong>registros</strong>, pequeños espacios de almacenamiento extremadamente próximos al procesamiento; y las unidades que realizan operaciones aritméticas, lógicas y de control. Los procesadores actuales pueden integrar múltiples núcleos, cachés y otras unidades, pero el modelo conceptual sigue siendo útil para comprender el flujo de instrucciones.</p>
+
+<p>La frecuencia de reloj, el número de núcleos o la cantidad de caché no deben interpretarse aisladamente como “velocidad total”. El rendimiento real depende de la arquitectura, el software, el tipo de carga, la memoria y muchos otros factores. Para un curso introductorio, lo importante es entender que la CPU <em>ejecuta instrucciones</em> y coordina operaciones en combinación con memoria y entrada/salida.</p>
+
+<h4>Memoria RAM</h4>
+<p>La memoria principal conserva temporalmente instrucciones y datos que están siendo utilizados. Su característica pedagógicamente más importante es que proporciona acceso rápido a información necesaria para la ejecución, pero normalmente es <strong>volátil</strong>: su contenido no se conserva cuando el sistema pierde alimentación. La Unidad 2 profundiza en su organización por celdas y direcciones.</p>
+
+<h4>Almacenamiento secundario</h4>
+<p>Un SSD o HDD conserva datos de manera persistente. Su propósito es distinto al de la RAM. Cuando se abre una aplicación, sus archivos están almacenados de manera persistente y parte de la información necesaria se carga a memoria principal para ejecutarse. Esta relación entre almacenamiento y memoria es esencial para entender posteriormente el sistema operativo.</p>
+
+<h4>GPU</h4>
+<p>La unidad de procesamiento gráfico surgió para acelerar operaciones asociadas con gráficos y visualización, y hoy también puede realizar cargas altamente paralelas. Puede estar integrada en el mismo paquete o chip que otros componentes o presentarse como una tarjeta dedicada. En un sistema de escritorio, una GPU dedicada suele conectarse mediante una ranura de expansión de alta velocidad.</p>
+
+<h4>Fuente de alimentación y refrigeración</h4>
+<p>El sistema necesita convertir y distribuir energía en niveles adecuados. La fuente de alimentación cumple esta función en muchos equipos de escritorio. CPU, GPU y otros componentes generan calor, por lo que disipadores, ventiladores y, en algunos casos, sistemas líquidos, extraen energía térmica para mantener condiciones de operación apropiadas.</p>
+
+<h4>Puertos y periféricos</h4>
+<p>USB, audio, Ethernet, HDMI/DisplayPort y otros estándares conectan periféricos o redes. Desde la perspectiva lógica, un periférico es un dispositivo con el que el sistema intercambia información; desde la perspectiva física, existen conectores, controladores y señales que hacen posible esa comunicación.</p>
+
+<h3>1.3.1 Vista 3D complementaria</h3>
+<p>Para reconocer la disposición espacial de una computadora moderna, se incluye un modelo interactivo externo. Puede rotarse, acercarse y observarse desde distintos ángulos. El modelo no reemplaza las fotografías reales anteriores; su función es facilitar la percepción volumétrica de la ubicación relativa de los componentes.</p>
+<div class="model3d">
+<iframe title="Modelo 3D interactivo de una computadora de escritorio" allow="autoplay; fullscreen; xr-spatial-tracking" allowfullscreen src="https://sketchfab.com/models/1a24273417534f69afa0f7c62b643ffc/embed"></iframe>
+<div class="caption">Modelo 3D “Custom Gaming PC”, Yolala3D/Y3D, Sketchfab, licencia CC Attribution. Incluye placa ASUS, módulos RAM, GPU, refrigeración y fuente dentro del gabinete.</div>
+</div>
+
+<h3 id="u1-logica">1.4 Arquitectura lógica: ver el computador más allá de las piezas</h3>
+<p>La arquitectura lógica describe las funciones y relaciones del sistema independientemente de la forma física concreta de la placa. Un diagrama lógico puede mostrar CPU, memoria, entrada/salida y almacenamiento como bloques conectados. Esa representación no pretende dibujar exactamente los chips; pretende mostrar <strong>qué función cumple cada bloque y cómo circula la información</strong>.</p>
+
+<div class="diagram">
+<div class="arch">
+  <div class="box"><strong>Entrada</strong><br><span class="legend">datos e instrucciones</span></div>
+  <div class="box"><strong>Memoria principal</strong><br><span class="legend">programas y datos activos</span></div>
+  <div class="box"><strong>CPU</strong><br><span class="legend">control + ejecución</span></div>
+  <div class="box"><strong>Almacenamiento</strong><br><span class="legend">persistencia</span></div>
+  <div class="box"><strong>Salida</strong><br><span class="legend">resultados</span></div>
+</div>
+</div>
+
+<p>Los buses e interconexiones transportan direcciones, datos y señales de control. A nivel introductorio conviene reconocer tres ideas: una ubicación de memoria puede identificarse por una <strong>dirección</strong>; los datos viajan entre componentes; y las señales de control coordinan cuándo y cómo ocurre cada transferencia.</p>
+
+<h3 id="u1-vn">1.5 El concepto de programa almacenado y la arquitectura de von Neumann</h3>
+<p>Dale y Lewis utilizan la arquitectura de von Neumann para explicar el computador de propósito general. La idea central es el <span class="term">programa almacenado</span>: instrucciones y datos residen en memoria, de manera que la máquina puede recuperar una instrucción, interpretarla y ejecutarla. Esto evita que cada nueva tarea exija reconstruir físicamente el equipo.</p>
+
+<div class="callout green">
+<strong>La consecuencia más importante:</strong> la misma máquina física puede ejecutar un procesador de textos, un navegador o un algoritmo científico porque lo que cambia es la secuencia de instrucciones almacenada.
+</div>
+
+<h4>El ciclo de instrucción</h4>
+<p>En su forma más simple, el procesamiento sigue un ciclo repetitivo. Dale y Lewis lo describen como <em>fetch–decode–execute</em>:</p>
+<table>
+<tr><th>Fase</th><th>Qué ocurre conceptualmente</th></tr>
+<tr><td><strong>Fetch · búsqueda</strong></td><td>La CPU obtiene de memoria la siguiente instrucción que debe procesar.</td></tr>
+<tr><td><strong>Decode · decodificación</strong></td><td>La unidad de control interpreta el código de operación y determina qué recursos o datos necesita.</td></tr>
+<tr><td><strong>Execute · ejecución</strong></td><td>Se realiza la operación: cálculo, comparación, transferencia, salto, acceso a memoria u otra acción.</td></tr>
+<tr><td><strong>Continuación</strong></td><td>Se actualiza el estado necesario y el ciclo prosigue con la instrucción correspondiente.</td></tr>
+</table>
+
+<p>El modelo real de un procesador contemporáneo es mucho más sofisticado: puede tener ejecución fuera de orden, predicción, múltiples niveles de caché y paralelismo. Sin embargo, el ciclo conceptual sigue siendo valioso porque explica la relación fundamental entre programa, memoria y CPU.</p>
+
+<h3 id="u1-historia">1.6 Historia de la computación: de mecanismos físicos a sistemas programables</h3>
+<p>Brookshear incorpora la historia no como una colección de fechas, sino para mostrar cómo surgieron las ideas actuales. El recorrido comienza con dispositivos de cálculo y almacenamiento de información, avanza hacia máquinas mecánicas programables, máquinas electromecánicas y electrónicas y culmina en sistemas basados en circuitos integrados y microprocesadores.</p>
+
+<div class="timeline">
+<div class="event"><b>Ábaco y dispositivos de cálculo tempranos</b><br>Representan valores mediante posiciones físicas. El operador humano sigue el procedimiento de cálculo.</div>
+<div class="event"><b>Pascal y Leibniz</b><br>Las máquinas de engranajes automatizan operaciones aritméticas específicas y muestran una progresiva mecanización del cálculo.</div>
+<div class="event"><b>Charles Babbage</b><br>Sus diseños, especialmente la máquina analítica, anticipan ideas de una máquina programable. Brookshear destaca el uso previsto de instrucciones mediante tarjetas perforadas.</div>
+<div class="event"><b>Ada Lovelace</b><br>Su trabajo relacionado con la máquina analítica se reconoce históricamente como uno de los primeros ejemplos de descripción de procedimientos para una máquina programable.</div>
+<div class="event"><b>Máquinas electromecánicas y tarjetas perforadas</b><br>La automatización del procesamiento de datos se extiende con relés, tabuladores y sistemas de tarjetas.</div>
+<div class="event"><b>Computadores electrónicos</b><br>Las válvulas de vacío permiten conmutación electrónica rápida, pero con gran tamaño, consumo y producción de calor.</div>
+<div class="event"><b>Transistor</b><br>Los dispositivos semiconductores reducen tamaño y consumo respecto de las válvulas y favorecen una nueva generación de equipos.</div>
+<div class="event"><b>Circuitos integrados</b><br>Múltiples componentes electrónicos pasan a integrarse en un mismo sustrato, incrementando densidad y confiabilidad.</div>
+<div class="event"><b>Microprocesador</b><br>La CPU se integra en un circuito compacto, habilitando la expansión de computadores personales, sistemas embebidos y dispositivos digitales.</div>
+<div class="event"><b>Sistemas contemporáneos</b><br>Procesadores multinúcleo, GPU, teléfonos, nube y sistemas embebidos muestran la diversificación de la computación manteniendo principios fundamentales de representación y procesamiento de información.</div>
+</div>
+
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg?utm_campaign=index&utm_content=thumbnail_unscaled&utm_source=commons.wikimedia.org" alt="Fotografía histórica real de ENIAC en operación">
+<figcaption><strong>ENIAC.</strong> Fotografía histórica del U.S. Army: Glen Beck y Betty Snyder trabajando con el ENIAC. La imagen permite dimensionar la diferencia física entre un computador electrónico temprano y un sistema moderno. Dominio público en Estados Unidos.</figcaption>
+</figure>
+
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IBM_System360_Model_30.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org" alt="Fotografía real de un IBM System 360 Model 30">
+<figcaption><strong>IBM System/360 Model 30.</strong> Ejemplo real de un sistema de la era de los mainframes, exhibido en el Computer History Museum. Fotografía de Dave Ross, CC BY 2.0.</figcaption>
+</figure>
+
+<p>La historia ayuda a interpretar el presente: los términos memoria, programa, instrucción, almacenamiento y entrada/salida no aparecieron de forma repentina, sino como respuestas a necesidades de automatización y procesamiento. El cambio decisivo no fue únicamente “hacer máquinas más pequeñas”, sino aumentar la capacidad de almacenar instrucciones y datos, reprogramar el comportamiento y construir capas de software cada vez más complejas.</p>
+
+<div class="refbox">
+<h3>Referencias principales de la Unidad 1</h3>
+<ul>
+<li>Brookshear, J. G. (2012). <em>Introducción a la Computación</em>, 11.ª ed. Cap. 0 “Introducción”, especialmente historia, algoritmos y abstracción; cap. 2 “Tratamiento de datos”, especialmente arquitectura de computadoras y ejecución de programas.</li>
+<li>Dale, N., & Lewis, J. (2016). <em>Computer Science Illuminated</em>, 6th ed. Cap. 1 “The Big Picture”; cap. 4 “Gates and Circuits”; cap. 5 “Computing Components”.</li>
+<li>Programa oficial BD-111. Unidad 1: computador, hardware/software, arquitectura física, arquitectura software e historia de la computación.</li>
+</ul>
+</div>
+</section>
+
+<section class="unit" id="u2">
+<div class="unit-label">Unidad 2 · Almacenamiento de datos</div>
+<h2>Bits, memoria, dispositivos de almacenamiento y representación de la información</h2>
+<p class="sec-intro">La computadora trabaja con una enorme diversidad de información —números, texto, imágenes, audio, video e instrucciones— pero internamente necesita representarla mediante patrones discretos. La Unidad 2 explica el puente entre la información que una persona reconoce y los patrones binarios que el hardware puede almacenar y manipular.</p>
+
+<h3 id="u2-bits">2.1 Los bits y su almacenamiento</h3>
+<p>Un <span class="term">bit</span> es una unidad binaria que puede tomar uno de dos valores convencionales: 0 o 1. Estos valores no son “números” en todos los contextos; son símbolos que pueden representar dos estados distinguibles. Un circuito puede asociar esos estados con rangos de tensión eléctrica; un dispositivo magnético puede asociarlos con orientaciones; una memoria flash puede utilizar niveles de carga; una transmisión puede utilizar variaciones de señal. Lo importante es que el sistema define dos estados interpretables de manera consistente.</p>
+
+<p>Brookshear conecta los bits con operaciones booleanas, puertas lógicas y biestables. Esa conexión es fundamental: el bit no solo se guarda, también se combina y transforma mediante operaciones lógicas. AND, OR y NOT son operaciones básicas que, implementadas electrónicamente, permiten construir circuitos más complejos.</p>
+
+<table>
+<tr><th>Operación</th><th>Interpretación básica</th><th>Ejemplo lógico</th></tr>
+<tr><td>NOT</td><td>Invierte el valor.</td><td>NOT 1 → 0; NOT 0 → 1.</td></tr>
+<tr><td>AND</td><td>Produce 1 cuando ambas entradas cumplen la condición.</td><td>1 AND 1 → 1.</td></tr>
+<tr><td>OR</td><td>Produce 1 cuando al menos una entrada es 1.</td><td>0 OR 1 → 1.</td></tr>
+<tr><td>XOR</td><td>Produce 1 cuando las entradas difieren.</td><td>1 XOR 0 → 1; 1 XOR 1 → 0.</td></tr>
+</table>
+
+<h4>Del bit al byte</h4>
+<p>Los bits se agrupan para representar conjuntos más amplios de valores. Un <strong>byte</strong> está compuesto por ocho bits. Con ocho posiciones binarias existen 2<sup>8</sup> combinaciones posibles, es decir, 256 patrones distintos. El significado de cada patrón depende del esquema de representación: puede corresponder a un número, un carácter, parte de un color, una instrucción o una porción de otro dato.</p>
+
+<div class="formula">1 byte = 8 bits &nbsp;&nbsp;·&nbsp;&nbsp; 2⁸ = 256 patrones posibles</div>
+
+<p>Es importante separar <strong>patrón de bits</strong> y <strong>significado</strong>. El patrón <code>01000001</code> puede interpretarse como 65 en un contexto numérico; en ASCII corresponde a la letra “A”. El patrón físico no cambia: cambia la convención usada para interpretarlo.</p>
+
+<h3 id="u2-memoria">2.2 Memoria principal: celdas, direcciones y acceso</h3>
+<p>Brookshear explica la memoria principal como un gran conjunto de circuitos capaces de conservar bits. Para manipular cantidades útiles, esos bits se organizan en unidades accesibles llamadas <span class="term">celdas</span>. Una organización habitual utiliza celdas de un byte. Cada celda recibe una <strong>dirección</strong> que permite identificar su ubicación.</p>
+
+<div class="diagram">
+<pre>Dirección      Contenido (8 bits)
+0x1000         01000001
+0x1001         01100010
+0x1002         11110000
+0x1003         00101101
+...</pre>
+</div>
+
+<p>La dirección es análoga a una etiqueta de ubicación; el contenido es el patrón que se encuentra en esa ubicación. La CPU puede solicitar lectura o escritura de una dirección. Esta separación permite que un programa trabaje con datos distribuidos en memoria sin que el significado dependa de la posición física exacta de cada transistor.</p>
+
+<h4>Bit más significativo y bit menos significativo</h4>
+<p>Cuando se representa un valor binario en una fila, el extremo izquierdo suele denominarse de mayor peso y el derecho de menor peso. Si el patrón se interpreta como número, la posición izquierda corresponde a una potencia mayor de la base. Por eso se utilizan los términos <strong>MSB</strong> (<em>most significant bit</em>) y <strong>LSB</strong> (<em>least significant bit</em>).</p>
+
+<h4>Capacidad</h4>
+<p>La capacidad de memoria se expresa en bytes y sus múltiplos. En el uso comercial se encuentran prefijos decimales (kB, MB, GB, TB); en contextos técnicos también aparecen múltiplos binarios (KiB, MiB, GiB). En cursos introductorios conviene reconocer que la diferencia proviene de si se utilizan potencias de 10 o potencias de 2.</p>
+
+<table>
+<tr><th>Unidad</th><th>Convención decimal</th><th>Unidad binaria cercana</th></tr>
+<tr><td>kB</td><td>1 000 bytes</td><td>1 KiB = 1 024 bytes</td></tr>
+<tr><td>MB</td><td>1 000 000 bytes</td><td>1 MiB = 1 048 576 bytes</td></tr>
+<tr><td>GB</td><td>1 000 000 000 bytes</td><td>1 GiB = 1 073 741 824 bytes</td></tr>
+</table>
+
+<p>La RAM no debe confundirse con el almacenamiento secundario. En el modelo del sistema, la memoria principal está directamente asociada con la ejecución activa de programas y datos; el almacenamiento secundario conserva información de manera persistente y normalmente tiene mayor capacidad a menor costo por byte, pero con características de acceso distintas.</p>
+
+<h3 id="u2-masivo">2.3 Almacenamiento masivo: HDD, SSD y memoria flash</h3>
+<p>Brookshear utiliza el término <span class="term">almacenamiento masivo</span> para agrupar tecnologías destinadas a conservar grandes cantidades de información de forma persistente. Históricamente se han empleado medios magnéticos, ópticos y electrónicos. La tecnología ha cambiado, pero el propósito permanece: guardar archivos y estructuras que deben sobrevivir al apagado.</p>
+
+<div class="twofig">
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Open_hard-drive.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org" alt="Fotografía real de un disco duro abierto">
+<figcaption><strong>HDD abierto.</strong> Se observan el plato y el conjunto de cabezal/actuador. Fotografía de Zzubnik, dominio público. Un disco magnético almacena información sobre superficies giratorias y utiliza mecanismos electromecánicos para posicionar el cabezal.</figcaption>
+</figure>
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/03/A_2230_NVME_SSD.jpg?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org" alt="Fotografía real de una unidad SSD NVMe M.2 2230">
+<figcaption><strong>SSD NVMe real.</strong> No utiliza platos móviles. La fotografía permite observar chips de memoria, controlador y contactos. Imagen de User5515, CC0, Wikimedia Commons.</figcaption>
+</figure>
+</div>
+
+<h4>Disco duro magnético (HDD)</h4>
+<p>Un HDD utiliza platos recubiertos de material magnético que giran a velocidad elevada. Un brazo posiciona cabezales para leer o modificar regiones del medio. Conceptualmente aparecen términos como pista, sector y cilindro en la organización clásica. El tiempo de acceso depende, entre otros factores, del movimiento mecánico y de la posición de los datos.</p>
+
+<h4>SSD</h4>
+<p>Un SSD utiliza memoria no volátil, habitualmente NAND flash, y un controlador que administra lectura, escritura, corrección de errores, mapeo y otras funciones. Al no depender de un brazo mecánico para posicionarse sobre un plato, su patrón de acceso difiere del HDD. Esto explica por qué comparar únicamente “capacidad” no describe la experiencia completa de uso.</p>
+
+<h4>Memoria flash removible</h4>
+<p>Memorias USB y tarjetas de memoria utilizan tecnologías de memoria no volátil con controladores integrados. Su facilidad de transporte es una ventaja, pero también introduce riesgos de pérdida física, daños, malware y manejo inadecuado de información sensible.</p>
+
+<h4>Almacenamiento óptico</h4>
+<p>CD, DVD y Blu-ray codifican información mediante propiedades ópticas de la superficie. Aunque su presencia ha disminuido en equipos personales, son útiles para comprender que “almacenamiento digital” no equivale a una sola tecnología física.</p>
+
+<h4>Archivos y bloques</h4>
+<p>El usuario piensa en documentos, imágenes o carpetas; el dispositivo trabaja con unidades físicas o lógicas de almacenamiento. El sistema operativo y el sistema de archivos construyen la capa que traduce entre ambos niveles. Esta idea será retomada en la Unidad 3: un archivo es una abstracción administrada por software sobre un medio físico.</p>
+
+<h3 id="u2-representacion">2.4 Representación de la información mediante patrones de bits</h3>
+<p>Brookshear dedica una sección completa a mostrar que el mismo principio binario puede codificar texto, números, imágenes y sonido. Dale y Lewis amplían este enfoque incluyendo Unicode, color, gráficos, audio y video. La clave es comprender que un patrón de bits no “se ve” como texto ni “suena” como audio hasta que un programa aplica la convención correcta.</p>
+
+<h4>Texto: ASCII y Unicode</h4>
+<p>Los sistemas de codificación asignan valores a símbolos. ASCII fue un estándar temprano ampliamente usado para letras, números, signos y caracteres de control. Unicode amplía radicalmente el repertorio para representar sistemas de escritura y símbolos de múltiples lenguas. Codificaciones como UTF-8 especifican cómo representar puntos de código mediante bytes.</p>
+
+<div class="formula">"A" → código 65 → 01000001₂ &nbsp;&nbsp; (ejemplo ASCII)</div>
+
+<p>En Unicode, el objetivo ya no es suponer que un único byte puede representar toda la diversidad lingüística. Este cambio permite que una misma infraestructura maneje español, árabe, chino, símbolos matemáticos, emoji y otras escrituras, aunque la codificación concreta puede utilizar cantidades variables de bytes.</p>
+
+<h4>Imágenes raster</h4>
+<p>Una imagen digital raster está formada por una rejilla de <span class="term">píxeles</span>. Cada píxel contiene información de color. En un modelo RGB, por ejemplo, el color se describe mediante componentes rojo, verde y azul. Si cada componente utiliza 8 bits, un píxel RGB típico puede usar 24 bits antes de considerar transparencia u otros datos.</p>
+
+<p>La resolución espacial indica cuántos píxeles forman la imagen; la profundidad de color determina cuántos valores pueden distinguirse por componente o píxel. Más resolución o mayor profundidad incrementan la cantidad potencial de información y, sin compresión, el tamaño.</p>
+
+<h4>Gráficos vectoriales</h4>
+<p>En lugar de almacenar el color de cada píxel, una representación vectorial describe objetos mediante líneas, curvas, formas, coordenadas y atributos. Por eso una figura vectorial puede escalarse de manera distinta a una fotografía raster. Ambos enfoques terminan representándose mediante datos binarios, pero la estructura conceptual cambia.</p>
+
+<h4>Audio</h4>
+<p>Una señal acústica continua puede digitalizarse mediante <strong>muestreo</strong>: se toman mediciones de la amplitud a intervalos regulares y cada muestra se cuantiza con un número finito de bits. La frecuencia de muestreo y la profundidad de bits influyen en la precisión de la representación y en el volumen de datos.</p>
+
+<h4>Video</h4>
+<p>El video digital combina secuencias de imágenes con audio y metadatos. Almacenar cada cuadro sin compresión sería muy costoso, por lo que se utilizan códecs que aprovechan redundancia espacial y temporal. No es necesario estudiar un códec específico en esta unidad; lo importante es comprender que “video” es una interpretación estructurada de enormes secuencias de bits.</p>
+
+<h3 id="u2-numeracion">2.5 Sistemas numéricos: decimal, binario y hexadecimal</h3>
+<p>El programa de BD-111 exige trabajar con decimal, binario y hexadecimal. Los tres son sistemas <strong>posicionales</strong>: el valor de un dígito depende del símbolo y de la posición que ocupa. La diferencia principal es la base.</p>
+
+<table>
+<tr><th>Sistema</th><th>Base</th><th>Símbolos</th><th>Pesos de las posiciones</th></tr>
+<tr><td>Decimal</td><td>10</td><td>0–9</td><td>…, 10³, 10², 10¹, 10⁰</td></tr>
+<tr><td>Binario</td><td>2</td><td>0–1</td><td>…, 2³, 2², 2¹, 2⁰</td></tr>
+<tr><td>Hexadecimal</td><td>16</td><td>0–9, A–F</td><td>…, 16³, 16², 16¹, 16⁰</td></tr>
+</table>
+
+<h4>Binario a decimal</h4>
+<p>Considere <code>101101₂</code>. Cada posición se multiplica por su potencia de 2:</p>
+<div class="formula">101101₂ = 1·2⁵ + 0·2⁴ + 1·2³ + 1·2² + 0·2¹ + 1·2⁰ = 32 + 8 + 4 + 1 = 45₁₀</div>
+
+<h4>Decimal a binario</h4>
+<p>Una técnica clásica divide repetidamente el valor entre 2 y conserva los residuos. Para 45:</p>
+<pre>45 ÷ 2 = 22, residuo 1
+22 ÷ 2 = 11, residuo 0
+11 ÷ 2 =  5, residuo 1
+ 5 ÷ 2 =  2, residuo 1
+ 2 ÷ 2 =  1, residuo 0
+ 1 ÷ 2 =  0, residuo 1
+
+Leyendo los residuos de abajo hacia arriba:
+45₁₀ = 101101₂</pre>
+
+<h4>Binario y hexadecimal</h4>
+<p>La relación es especialmente cómoda porque 16 = 2⁴. Cada dígito hexadecimal corresponde exactamente a cuatro bits:</p>
+<table>
+<tr><th>Hex</th><th>Binario</th><th>Hex</th><th>Binario</th></tr>
+<tr><td>0</td><td>0000</td><td>8</td><td>1000</td></tr>
+<tr><td>1</td><td>0001</td><td>9</td><td>1001</td></tr>
+<tr><td>2</td><td>0010</td><td>A</td><td>1010</td></tr>
+<tr><td>3</td><td>0011</td><td>B</td><td>1011</td></tr>
+<tr><td>4</td><td>0100</td><td>C</td><td>1100</td></tr>
+<tr><td>5</td><td>0101</td><td>D</td><td>1101</td></tr>
+<tr><td>6</td><td>0110</td><td>E</td><td>1110</td></tr>
+<tr><td>7</td><td>0111</td><td>F</td><td>1111</td></tr>
+</table>
+
+<p>Así, <code>1101 0110 0011₂</code> se agrupa como <code>D 6 3₁₆</code>. Hexadecimal es frecuente en informática porque compacta patrones binarios largos sin perder una correspondencia directa con grupos de bits.</p>
+
+<h3 id="u2-enteros">2.6 Almacenamiento de enteros y complemento a dos</h3>
+<p>Una secuencia de bits sin signo puede interpretarse como un entero no negativo mediante notación binaria convencional. Sin embargo, el computador también debe representar números negativos. Brookshear presenta la <span class="term">notación en complemento a dos</span> como el sistema de uso más extendido para enteros con signo.</p>
+
+<p>Con <em>n</em> bits, el complemento a dos permite representar valores desde −2<sup>n−1</sup> hasta 2<sup>n−1</sup>−1. En 8 bits, el intervalo es −128 a 127.</p>
+
+<div class="formula">8 bits con signo (complemento a dos): −128 … 0 … +127</div>
+
+<h4>Cómo obtener la representación negativa</h4>
+<p>Una forma operativa de obtener −x a partir de +x en un ancho fijo es invertir todos los bits y sumar 1. Por ejemplo, en 8 bits:</p>
+<pre>+5  = 00000101
+NOT = 11111010
++1  = 11111011  → representa −5 en complemento a dos</pre>
+
+<p>El bit más significativo suele coincidir con 0 para valores no negativos y 1 para valores negativos, pero no debe interpretarse como un “signo separado” al estilo decimal. Es parte de una representación completa diseñada para facilitar la aritmética binaria.</p>
+
+<h4>Desbordamiento</h4>
+<p>El número de bits es finito. Si una operación produce un valor fuera del intervalo representable, ocurre <strong>overflow</strong>. Esta idea es fundamental: las computadoras no representan automáticamente todos los enteros posibles; trabajan dentro de límites definidos por la cantidad de bits y el tipo de dato.</p>
+
+<h3 id="u2-fraccionarios">2.7 Almacenamiento de números fraccionarios y punto flotante</h3>
+<p>Los números con fracción plantean un problema adicional. En binario también existen posiciones a la derecha del punto: 2<sup>−1</sup>, 2<sup>−2</sup>, 2<sup>−3</sup>, etc.</p>
+
+<div class="formula">10.101₂ = 1·2¹ + 0·2⁰ + 1·2⁻¹ + 0·2⁻² + 1·2⁻³ = 2 + 0.5 + 0.125 = 2.625₁₀</div>
+
+<p>Para manejar rangos grandes y fracciones se utiliza la idea de <span class="term">punto flotante</span>, análoga a la notación científica: se separan signo, una parte significativa y un exponente. Los formatos concretos definen cuántos bits se dedican a cada campo y cómo se codifican casos especiales.</p>
+
+<h4>Precisión finita</h4>
+<p>No todas las fracciones decimales tienen una representación binaria finita. Un valor aparentemente simple como 0.1₁₀ necesita una expansión binaria repetitiva. Como el hardware dispone de un número finito de bits, se almacena una aproximación. De aquí surgen pequeños errores de redondeo que pueden aparecer en cálculos con punto flotante.</p>
+
+<div class="callout gold">
+<strong>Consecuencia conceptual:</strong> “guardar un número real” significa almacenar una representación finita de ese número. La precisión del sistema es parte del modelo de datos y puede afectar comparaciones y cálculos.
+</div>
+
+<h4>Jerarquía de almacenamiento</h4>
+<p>Al cerrar la unidad conviene relacionar todo lo anterior. Los datos se representan mediante bits, pero esos bits pueden residir en tecnologías diferentes. Registros y cachés son extremadamente rápidos y pequeños; la RAM ofrece mayor capacidad para el trabajo activo; SSD y HDD proporcionan persistencia. La computadora funciona moviendo información entre niveles según necesidad.</p>
+
+<div class="refbox">
+<h3>Referencias principales de la Unidad 2</h3>
+<ul>
+<li>Brookshear, J. G. (2012). <em>Introducción a la Computación</em>, cap. 1 “Almacenamiento de datos”: bits, memoria principal, almacenamiento masivo, patrones de bits, sistema binario, complemento a dos y punto flotante.</li>
+<li>Dale, N., & Lewis, J. (2016). <em>Computer Science Illuminated</em>, cap. 2 “Binary Values and Number Systems” y cap. 3 “Data Representation”.</li>
+<li>Programa oficial BD-111. Unidad 2: bits y almacenamiento, memoria principal, almacenamiento masivo, patrones de bits, binario/decimal/hexadecimal, enteros y fraccionarios.</li>
+</ul>
+</div>
+</section>
+
+<section class="unit" id="u3">
+<div class="unit-label">Unidad 3 · Sistemas operativos</div>
+<h2>El software que coordina la máquina y crea el entorno de ejecución</h2>
+<p class="sec-intro">Un sistema operativo es el software que coordina recursos y ofrece el entorno en el que se ejecutan los demás programas. Brookshear lo describe como el software que controla el conjunto de operaciones de la computadora; Dale y Lewis lo presentan como la base que mantiene unidos hardware y software y administra memoria, procesos y CPU.</p>
+
+<h3>3.0 ¿Qué hace un sistema operativo?</h3>
+<p>Cuando una persona abre una aplicación, guarda un archivo, conecta un dispositivo, cambia de ventana o utiliza una red, normalmente no habla directamente con el hardware. El sistema operativo proporciona servicios y abstracciones que evitan que cada programa tenga que controlar directamente cada modelo de dispositivo.</p>
+
+<div class="grid">
+<div class="card"><h4>Administración de recursos</h4><p>Distribuye CPU, memoria, almacenamiento y dispositivos entre múltiples procesos.</p></div>
+<div class="card"><h4>Abstracción</h4><p>Presenta conceptos como archivos, procesos, ventanas y sockets en lugar de exponer detalles eléctricos del hardware.</p></div>
+<div class="card"><h4>Protección</h4><p>Separa usuarios y procesos, controla permisos y limita operaciones sensibles.</p></div>
+<div class="card"><h4>Interfaz</h4><p>Permite interacción mediante consola, interfaz gráfica, API y llamadas al sistema.</p></div>
+</div>
+
+<div class="diagram">
+<div class="arch">
+  <div class="box"><strong>Usuarios</strong></div>
+  <div class="box"><strong>Aplicaciones</strong></div>
+  <div class="box"><strong>Servicios / API</strong></div>
+  <div class="box"><strong>Kernel + drivers</strong></div>
+  <div class="box"><strong>Hardware</strong></div>
+</div>
+</div>
+
+<p>Este esquema es deliberadamente simplificado. En sistemas reales existen múltiples capas, servicios en espacio de usuario, bibliotecas, procesos del sistema, controladores y mecanismos de virtualización. El valor del modelo está en mostrar que el sistema operativo media entre aplicaciones y recursos físicos.</p>
+
+<h3 id="u3-historia">3.1 Historia de los sistemas operativos</h3>
+<p>Brookshear inicia la historia recordando que las primeras computadoras de las décadas de 1940 y 1950 requerían preparación manual considerable. Cada programa se trataba como un <strong>trabajo</strong> independiente: había que disponer tarjetas, cintas, interruptores y dispositivos antes de ejecutar. El tiempo de una máquina costosa podía desperdiciarse mientras se realizaban tareas de preparación.</p>
+
+<h4>Procesamiento por lotes</h4>
+<p>Para reducir tiempos muertos, los trabajos con necesidades similares comenzaron a agruparse en <span class="term">lotes</span>. El sistema podía procesar una secuencia de trabajos con menos intervención entre ellos. Dale y Lewis explican que esta terminología sobrevivió: aún se usa “batch” para describir ejecuciones no interactivas coordinadas.</p>
+
+<h4>Multiprogramación</h4>
+<p>La eficiencia mejora cuando varios programas permanecen en memoria y pueden alternarse. Si un programa debe esperar una operación de entrada/salida, otro puede aprovechar la CPU. Surge así la necesidad de que el sistema operativo lleve registro de qué programa está activo, dónde se encuentra en memoria y cuándo puede ejecutar.</p>
+
+<h4>Tiempo compartido</h4>
+<p>El <span class="term">timesharing</span> extiende esta idea para crear una experiencia interactiva: muchos usuarios o procesos reciben pequeñas porciones de tiempo de CPU. La rapidez del cambio puede producir la impresión de que cada uno dispone de la máquina de manera continua, aunque el procesador esté compartido.</p>
+
+<h4>Computación personal</h4>
+<p>Al disminuir el costo del hardware, el sistema operativo pasa de administrar grandes instalaciones compartidas a ofrecer entornos interactivos para una persona. Interfaces gráficas, ratón, ventanas, sistemas de archivos más accesibles y redes transforman el uso cotidiano.</p>
+
+<h4>Unix</h4>
+<p>Unix se vuelve una referencia histórica central por su influencia en sistemas posteriores. Sus ideas de procesos, permisos, archivos, herramientas pequeñas y composición de comandos contribuyeron a la cultura de sistemas operativos y desarrollo de software. Muchas familias de sistemas actuales tienen relación conceptual o histórica con Unix.</p>
+
+<h4>Linux</h4>
+<p>Linux es un kernel surgido en la década de 1990 y utilizado junto con un amplio ecosistema de software. Las distribuciones GNU/Linux combinan kernel, utilidades, bibliotecas, gestores de paquetes y entornos de escritorio. No existe una única “interfaz Linux”: el sistema puede utilizarse en servidores sin interfaz gráfica, escritorios, sistemas embebidos y otros contextos.</p>
+
+<h4>Windows</h4>
+<p>Windows evolucionó desde entornos gráficos tempranos hasta la familia basada en Windows NT utilizada en las versiones contemporáneas. Para el estudio introductorio interesa observar que, aunque la interfaz visual cambie, el sistema continúa resolviendo problemas comunes: procesos, memoria, archivos, usuarios, dispositivos y seguridad.</p>
+
+<div class="twofig">
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Windows_11_screenshot.png?utm_campaign=index&utm_content=thumbnail_unscaled&utm_source=commons.wikimedia.org" alt="Captura real de Windows 11">
+<figcaption><strong>Windows 11.</strong> Captura real que muestra herramientas del sistema, menú Inicio e información del equipo. Fuente: Wikimedia Commons; la captura incluye elementos con licencias y marcas descritas en su página de origen.</figcaption>
+</figure>
+<figure class="figure">
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Ubuntu_25.04_default_desktop_-_English.png?utm_campaign=index&utm_content=original&utm_source=commons.wikimedia.org" alt="Captura real del escritorio de Ubuntu 25.04">
+<figcaption><strong>Ubuntu 25.04.</strong> Captura real de un entorno GNU/Linux con GNOME. Fuente: Canonical Limited / Wikimedia Commons, software libre.</figcaption>
+</figure>
+</div>
+
+<p>Las capturas anteriores sirven para separar <strong>interfaz</strong> y <strong>arquitectura</strong>. Dos sistemas pueden verse muy diferentes y resolver internamente categorías de problemas semejantes. Brookshear señala precisamente que para un usuario casual las diferencias pueden parecer cosméticas, mientras que para profesionales las herramientas, modelos y filosofías pueden ser sustancialmente distintas.</p>
+
+<h3 id="u3-arq">3.2 Arquitectura de un sistema operativo</h3>
+<p>El programa oficial solicita comprender la arquitectura del sistema operativo. En este nivel conviene abordar la arquitectura como el conjunto de componentes y responsabilidades que permiten administrar la máquina.</p>
+
+<h4>Kernel</h4>
+<p>El <span class="term">kernel</span> es la parte central que opera con privilegios elevados y gestiona recursos fundamentales. Sus responsabilidades suelen incluir planificación de CPU, administración de memoria, interrupciones, mecanismos de comunicación, seguridad básica y coordinación con controladores.</p>
+
+<h4>Controladores de dispositivos</h4>
+<p>Un <span class="term">driver</span> conoce los detalles de un dispositivo específico y los expone al sistema mediante interfaces más uniformes. Gracias a esta capa, una aplicación no necesita incorporar el protocolo de cada impresora, adaptador de red o unidad de almacenamiento.</p>
+
+<h4>Llamadas al sistema</h4>
+<p>Una aplicación necesita solicitar operaciones protegidas: abrir un archivo, crear un proceso, reservar memoria o comunicarse por red. Las <span class="term">system calls</span> constituyen una frontera controlada para pedir servicios al kernel. Una biblioteca de programación puede ofrecer una función amigable que internamente desencadena una o más llamadas al sistema.</p>
+
+<h4>Shell e interfaz gráfica</h4>
+<p>La interfaz de usuario puede adoptar la forma de una línea de comandos, un escritorio gráfico o ambas. El <span class="term">shell</span> interpreta comandos y permite combinar herramientas. Un entorno gráfico aporta ventanas, menús, paneles y gestión visual de aplicaciones. Estos componentes forman parte de la experiencia del sistema, pero no son equivalentes al kernel.</p>
+
+<h4>Inicio o arranque</h4>
+<p>Al encender el equipo se ejecuta firmware que inicializa hardware y localiza un cargador de arranque. Este carga los componentes necesarios del sistema operativo y transfiere control. Luego se inicializan servicios, controladores y procesos hasta llegar al entorno disponible para el usuario. El detalle varía entre plataformas, pero la secuencia conceptual “firmware → cargador → kernel → servicios → sesión” ayuda a organizar la idea.</p>
+
+<h3 id="u3-procesos">3.3 Procesos, memoria y CPU: las tres responsabilidades centrales</h3>
+<p>Dale y Lewis organizan el estudio de sistemas operativos alrededor de tres responsabilidades: <strong>memory management</strong>, <strong>process management</strong> y <strong>CPU scheduling</strong>. Estas tres áreas explican cómo múltiples programas pueden coexistir sin que el usuario deba administrar manualmente cada recurso.</p>
+
+<h4>Programa versus proceso</h4>
+<p>Un programa es un conjunto relativamente estático de instrucciones almacenadas. Un <span class="term">proceso</span> es la entidad dinámica que existe cuando ese programa está en ejecución. El proceso tiene estado: contador de programa, registros, memoria asignada, archivos abiertos, credenciales y otros datos necesarios para reanudar su ejecución.</p>
+
+<table>
+<tr><th>Concepto</th><th>Descripción</th></tr>
+<tr><td>Programa</td><td>Conjunto de instrucciones almacenado; por sí mismo no está ejecutándose.</td></tr>
+<tr><td>Proceso</td><td>Instancia en ejecución de un programa con estado y recursos asociados.</td></tr>
+<tr><td>Hilo</td><td>Flujo de ejecución dentro de un proceso; múltiples hilos pueden compartir recursos del proceso.</td></tr>
+<tr><td>Planificador</td><td>Componente o mecanismo que decide qué proceso/hilo puede utilizar CPU.</td></tr>
+</table>
+
+<h4>Estados de un proceso</h4>
+<p>Dale y Lewis presentan un modelo de estados: un proceso puede estar siendo creado, listo para ejecutar, ejecutándose, esperando un recurso o finalizado. El objetivo no es memorizar un dibujo específico, sino comprender que un proceso cambia de estado según la disponibilidad de CPU y recursos.</p>
+
+<div class="diagram">
+<pre>NUEVO  →  LISTO  →  EJECUCIÓN  →  TERMINADO
+             ↑          |
+             |          ↓
+             └──────  ESPERA
+                 (E/S, recurso, evento)</pre>
+</div>
+
+<p>Cuando un proceso en ejecución solicita una operación que debe esperar —por ejemplo, datos de almacenamiento o red— puede pasar a estado de espera. Mientras tanto, otro proceso listo puede usar la CPU. Este mecanismo es una de las razones por las que un sistema puede mantener múltiples aplicaciones activas de manera eficiente.</p>
+
+<h4>Cambio de contexto</h4>
+<p>Para alternar entre procesos, el sistema guarda el estado necesario de uno y restaura el de otro. Este <span class="term">context switch</span> permite compartir el procesador, aunque tiene un costo: guardar/restaurar estado y modificar estructuras del sistema consume tiempo.</p>
+
+<h4>Planificación de CPU</h4>
+<p>La planificación decide quién ejecuta. Dale y Lewis presentan algoritmos clásicos como <strong>First Come, First Served</strong>, <strong>Shortest Job Next</strong> y <strong>Round Robin</strong>. En un curso introductorio, más que profundizar en matemáticas de planificación, interesa comprender las metas en tensión: respuesta rápida, equidad, utilización del procesador, rendimiento y prioridad.</p>
+
+<h4>Administración de memoria</h4>
+<p>El sistema operativo debe llevar registro de qué áreas de memoria están ocupadas y por quién. Históricamente se han utilizado esquemas de particiones; los sistemas modernos emplean técnicas de paginación y memoria virtual. El concepto clave es separar la visión que tiene un proceso de su memoria de la ubicación física exacta en RAM.</p>
+
+<p>La <span class="term">memoria virtual</span> crea la ilusión de un espacio de memoria amplio y organizado. No significa que el almacenamiento secundario “sea igual” que RAM. Cuando ciertas páginas no están en memoria, el sistema puede traerlas desde almacenamiento; demasiados intercambios producen una degradación importante del rendimiento.</p>
+
+<h3 id="u3-archivos">3.4 Archivos, directorios y dispositivos</h3>
+<p>Aunque el programa ubica el tema bajo “arquitectura del sistema operativo”, la gestión de archivos es esencial para comprender la experiencia cotidiana. Dale y Lewis dedican un capítulo específico a sistemas de archivos y directorios. El sistema operativo transforma bloques de almacenamiento en una organización con nombres, rutas, metadatos y permisos.</p>
+
+<h4>Archivo</h4>
+<p>Un archivo es una abstracción para una secuencia o estructura de datos persistentes. El sistema puede asociarle nombre, tamaño, propietario, fechas, permisos y otros metadatos. El contenido puede interpretarse como texto, imagen, ejecutable, base de datos u otro formato según su estructura y las aplicaciones que lo manejen.</p>
+
+<h4>Directorio</h4>
+<p>Los directorios organizan archivos y otros directorios de forma jerárquica. Una <strong>ruta</strong> identifica una ubicación dentro de esa estructura. Los sistemas difieren en sintaxis, pero comparten la necesidad de localizar objetos en el sistema de archivos.</p>
+
+<h4>Operaciones comunes</h4>
+<p>Crear, abrir, leer, escribir, reposicionar, cerrar, renombrar y eliminar son operaciones básicas. Una aplicación solicita estas operaciones al sistema en lugar de controlar físicamente los sectores de una unidad.</p>
+
+<h4>Entrada/salida</h4>
+<p>Teclados, ratones, pantallas, almacenamiento y adaptadores de red tienen velocidades y comportamientos muy diferentes. El sistema operativo utiliza controladores, interrupciones, colas y buffers para coordinarlos. Un <strong>buffer</strong> es una región temporal usada para amortiguar diferencias de velocidad o agrupar transferencias.</p>
+
+<h3 id="u3-seguridad">3.5 Seguridad en sistemas operativos</h3>
+<p>El programa BD-111 incluye explícitamente seguridad dentro de la Unidad 3. Brookshear diferencia ataques externos e internos; el enfoque actual puede organizarse alrededor de <strong>identidad, privilegios, aislamiento, actualización y protección de datos</strong>. En este punto del curso el objetivo es entender la seguridad como una responsabilidad estructural del sistema operativo.</p>
+
+<h4>Autenticación</h4>
+<p>El sistema necesita determinar qué identidad intenta acceder. Contraseñas, llaves criptográficas, biometría y autenticación multifactor pueden formar parte del proceso. Autenticar responde “¿quién intenta entrar?”; no decide todavía todo lo que esa identidad puede hacer.</p>
+
+<h4>Autorización y permisos</h4>
+<p>La autorización define qué recursos y operaciones están permitidos. Usuarios, grupos, listas de control, permisos de archivo y capacidades son mecanismos para implementar el principio de <strong>mínimo privilegio</strong>: cada entidad debería disponer únicamente de los permisos necesarios.</p>
+
+<h4>Separación de procesos</h4>
+<p>Un proceso ordinario no debería poder leer o modificar arbitrariamente la memoria de otro. La protección de memoria, los modos de privilegio del procesador y las reglas del kernel ayudan a mantener aislamiento. Esta separación reduce la posibilidad de que un fallo accidental se convierta inmediatamente en control total del sistema.</p>
+
+<h4>Actualizaciones</h4>
+<p>Los sistemas operativos son software complejo y pueden contener vulnerabilidades. Las actualizaciones corrigen fallos, incorporan mitigaciones y renuevan componentes. Mantener un sistema sin parches conocidos aumenta la exposición.</p>
+
+<h4>Arranque y firmware</h4>
+<p>La cadena de confianza comienza antes del escritorio. Mecanismos de arranque seguro, firmas y verificación pueden ayudar a impedir que componentes no autorizados sustituyan partes críticas del proceso de inicio.</p>
+
+<h4>Cifrado y protección de datos</h4>
+<p>El sistema operativo puede ofrecer cifrado de disco, almacenamiento protegido de credenciales y APIs criptográficas. El cifrado ayuda a proteger información, especialmente frente a pérdida o robo físico, pero no reemplaza permisos, actualizaciones ni buenas prácticas de autenticación.</p>
+
+<h4>Registro y auditoría</h4>
+<p>Los registros del sistema documentan eventos relevantes: inicios de sesión, errores, servicios, actividad de seguridad y cambios. Para administración y respuesta a incidentes, poder reconstruir qué ocurrió es tan importante como intentar prevenir todo fallo.</p>
+
+<div class="callout">
+<strong>La seguridad del sistema operativo no es una sola función.</strong> Surge de múltiples mecanismos que trabajan juntos: controles de acceso, aislamiento, actualizaciones, manejo de credenciales, cifrado, configuración, arranque, monitoreo y protección de dispositivos.
+</div>
+
+<h3>3.6 Relación entre las Unidades 1, 2 y 3</h3>
+<p>Estas unidades forman una secuencia lógica. En la Unidad 1 se identifica la máquina y sus componentes. En la Unidad 2 se explica cómo la información se transforma en bits y cómo esos bits se almacenan. En la Unidad 3 aparece el software encargado de coordinar esos recursos y convertirlos en un entorno utilizable. La relación puede resumirse así:</p>
+
+<div class="diagram">
+<pre>UNIDAD 1
+Hardware + software + arquitectura
+        ↓
+UNIDAD 2
+Bits + memoria + almacenamiento + representación
+        ↓
+UNIDAD 3
+Sistema operativo:
+administra CPU, memoria, archivos, dispositivos, usuarios y seguridad</pre>
+</div>
+
+<div class="refbox">
+<h3>Referencias principales de la Unidad 3</h3>
+<ul>
+<li>Brookshear, J. G. (2012). <em>Introducción a la Computación</em>, cap. 3 “Sistemas operativos”: historia, arquitectura, coordinación de actividades, procesos, competencia entre procesos y seguridad.</li>
+<li>Dale, N., & Lewis, J. (2016). <em>Computer Science Illuminated</em>, cap. 10 “Operating Systems” y cap. 11 “File Systems and Directories”.</li>
+<li>Programa oficial BD-111. Unidad 3: historia de los sistemas operativos (Windows, Linux, Unix y otros), arquitectura de un sistema operativo y seguridad.</li>
+</ul>
+</div>
+</section>
+
+<section class="unit" id="glosario">
+<div class="unit-label">Consulta rápida</div>
+<h2>Glosario esencial de las Unidades 1–3</h2>
+<dl class="glossary">
+<dt>Arquitectura</dt><dd>Organización conceptual y estructural de los componentes de un sistema y de sus relaciones.</dd>
+<dt>Bit</dt><dd>Unidad binaria que puede adoptar uno de dos estados convencionales.</dd>
+<dt>Byte</dt><dd>Grupo de ocho bits.</dd>
+<dt>CPU</dt><dd>Unidad Central de Procesamiento; ejecuta instrucciones y coordina operaciones.</dd>
+<dt>Dirección de memoria</dt><dd>Identificador que permite localizar una posición o unidad accesible de memoria.</dd>
+<dt>Firmware</dt><dd>Software estrechamente asociado con hardware y utilizado para inicialización o control de bajo nivel.</dd>
+<dt>Hardware</dt><dd>Componentes físicos de un sistema de cómputo.</dd>
+<dt>HDD</dt><dd>Dispositivo de almacenamiento magnético con platos giratorios y cabezales de lectura/escritura.</dd>
+<dt>Hexadecimal</dt><dd>Sistema posicional de base 16 que utiliza 0–9 y A–F.</dd>
+<dt>Kernel</dt><dd>Núcleo privilegiado de un sistema operativo.</dd>
+<dt>Memoria principal</dt><dd>Memoria utilizada directamente para programas y datos activos; típicamente RAM.</dd>
+<dt>Memoria virtual</dt><dd>Mecanismo que presenta a los procesos un espacio de memoria lógico separado de la disponibilidad física inmediata de RAM.</dd>
+<dt>Proceso</dt><dd>Representación dinámica de un programa en ejecución.</dd>
+<dt>Programa almacenado</dt><dd>Principio según el cual instrucciones y datos se conservan en memoria y pueden ser recuperados por la CPU.</dd>
+<dt>RAM</dt><dd>Memoria de acceso aleatorio utilizada como memoria principal; normalmente volátil.</dd>
+<dt>Software</dt><dd>Programas e instrucciones que dirigen el comportamiento del sistema.</dd>
+<dt>SSD</dt><dd>Unidad de estado sólido basada en memoria no volátil y sin platos mecánicos.</dd>
+<dt>Sistema de archivos</dt><dd>Estructuras y reglas mediante las que el sistema operativo organiza archivos y directorios sobre almacenamiento.</dd>
+<dt>Sistema operativo</dt><dd>Software que administra recursos del computador y proporciona servicios a programas y usuarios.</dd>
+<dt>Complemento a dos</dt><dd>Representación binaria ampliamente utilizada para enteros con signo.</dd>
+<dt>Punto flotante</dt><dd>Representación finita de números fraccionarios basada conceptualmente en signo, significando y exponente.</dd>
+</dl>
+</section>
+
+
+
+</main>
+</div>
+</body>
+</html>
